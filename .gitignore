@@ -42,9 +42,9 @@ build
 CMakeCache.txt
 CMakeFiles
 CMakeScripts
-Makefile
+# Makefile
 Testing
-*.cmake
+# *.cmake
 .ninja_deps
 .ninja_log
 build.ninja
