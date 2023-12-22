@@ -20,7 +20,7 @@ dpdk:
 		-DERPC_DPDK=true -march=native \
 		-I ../src -I ../third_party/asio/include -I /usr/include/dpdk \
 		-L ../build $(LIBS) \
-		-Wl,--whole-archive -ldpdk -Wl,--no-whole-archive \
+		-Wl,--whole-archive $(shell pkg-config --static --libs-only-l libdpdk) -Wl,--no-whole-archive \
 		-lnuma -ldl -libverbs -lmlx4 -lmlx5
 
 	g++ -g -std=c++11 -o client client.cc \
@@ -28,7 +28,7 @@ dpdk:
 		-DERPC_DPDK=true -march=native \
 		-I ../src -I ../third_party/asio/include -I /usr/include/dpdk \
 		-L ../build $(LIBS) \
-		-Wl,--whole-archive -ldpdk -Wl,--no-whole-archive \
+		-Wl,--whole-archive $(shell pkg-config --static --libs-only-l libdpdk) -Wl,--no-whole-archive \
 		-lnuma -ldl -libverbs -lmlx4 -lmlx5
 clean:
 	rm server client
