@@ -76,7 +76,7 @@ static uint16_t extract_udp_port_from_uri(std::string uri) {
 /// processes file. The autorun process file is formatted like so:
 /// <DNS name> <UDP port> <NUMA>
 static std::string get_hostname_for_process(size_t process_i) {
-  std::string process_file = "../../scripts/autorun_process_file";
+  std::string process_file = "../eRPC/scripts/autorun_process_file";
   std::string line = get_line_n(process_file, process_i);
   rt_assert(is_valid_process_line(line), "Invalid process line " + line);
 
@@ -88,7 +88,7 @@ static std::string get_hostname_for_process(size_t process_i) {
 /// processes file. The autorun process file is formatted like so:
 /// <DNS name> <UDP port> <NUMA>
 static std::string get_udp_port_for_process(size_t process_i) {
-  std::string process_file = "../../scripts/autorun_process_file";
+  std::string process_file = "../eRPC/scripts/autorun_process_file";
   std::string line = get_line_n(process_file, process_i);
 
   std::vector<std::string> split_vec = split(line, ' ');
