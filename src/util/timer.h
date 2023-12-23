@@ -23,6 +23,12 @@ static inline size_t rdtsc() {
 /// An alias for rdtsc() to distinguish calls on the critical path
 static const auto &dpath_rdtsc = rdtsc;
 
+static double sec_since(const struct timespec &t0) {
+  struct timespec t1;
+  clock_gettime(CLOCK_REALTIME, &t1);
+  return (t1.tv_sec - t0.tv_sec) + (t1.tv_nsec - t0.tv_nsec) / 1000000000.0;
+}
+
 static void nano_sleep(size_t ns, double freq_ghz) {
   size_t start = rdtsc();
   size_t end = start;
